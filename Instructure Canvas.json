@@ -1,0 +1,137 @@
+{
+    "schema": {
+        "crud_objects": {
+            "accounts": {
+                "operations": {
+                    "accountsList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/v1/accounts"
+                        },
+                        "processing_options": {
+                            "output_field": null
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "name": "string*",
+                    "parent_account_id": "string*",
+                    "root_account_id": "string*",
+                    "workflow_state": "string*",
+                    "uuid": "string*",
+                    "default_storage_quota_mb": "string*",
+                    "default_user_storage_quota_mb": "string*",
+                    "default_group_storage_quota_mb": "string*",
+                    "default_time_zone": "string*",
+                    "course_template_id": "string*"
+                }
+            },
+            "users": {
+                "operations": {
+                    "usersList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "accounts",
+                            "iterator": "id",
+                            "path": "/v1/accounts/{iterator}/users",
+                            "base": {
+                                "account_id": "{iterator}"
+                            },
+                            "queryParameters": {
+                                "include_deleted_users": true
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": null
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "name": "string*",
+                    "sortable_name": "string*",
+                    "last_name": "string*",
+                    "first_name": "string*",
+                    "short_name": "string*",
+                    "sis_user_id": "string*",
+                    "sis_import_id": "string*",
+                    "integration_id": "string*",
+                    "login_id": "string*",
+                    "avatar_url": "string*",
+                    "avatar_state": "string*",
+                    "enrollments": "string*",
+                    "email": "string*",
+                    "locale": "string*",
+                    "last_login": "string*",
+                    "time_zone": "string*",
+                    "bio": "string*",
+                    "pronouns": "string*",
+                    "created_at": "string*"
+                }
+            }
+        }
+    },
+    "rest": {
+        "config": {
+            "baseUrl": "https://{tenant_id}/api",
+            "get": {
+                "pagination": {
+                    "mode": "link"
+                },
+                "queryParameters": {
+                    "per_page": 5000
+                }
+            },
+            "authentication": "aeries",
+            "call_handling": "generic",
+            "test_connection": {
+                "url": "/v1/accounts"
+            },
+            "socket_timeout": 3600000,
+            "retry": [
+            {
+                "type": "statusCode",
+                "statusCode": 429,
+                "retry": {
+                    "type": "simple",
+                    "maxCount": 12,
+                    "waitTime": 5
+                }
+            },
+            {
+                "type": "statusCode",
+                "statusCode": 401,
+                "retry": {
+                    "type": "simple",
+                    "maxCount": 6,
+                    "waitTime": 5
+                }
+            },
+            {
+                "type": "statusCode",
+                "statusCode": 500,
+                "retry": {
+                    "type": "simple",
+                    "maxCount": 12,
+                    "waitTime": 5
+                }
+            },
+            {
+                "type": "connectionError"
+            }
+        ],
+            "accept": "application/json",
+            "headers": {
+                "Authorization": "Bearer {client_secret}"
+            }
+        }
+    },
+    "connection": {
+        "items": []
+    }
+}
