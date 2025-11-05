@@ -29,6 +29,281 @@
                     "course_template_id": "string*"
                 }
             },
+            "courses": {
+                "operations": {
+                    "coursesList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "accounts",
+                            "iterator": "id",
+                            "path": "/v1/accounts/{iterator}/courses",
+                            "queryParameters": {
+                                "state[]": ["available","unpublished"]
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": null
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "sis_course_id": "string*",
+                    "uuid": "string*",
+                    "integration_id": "string*",
+                    "sis_import_id": "string*",
+                    "name": "string*",
+                    "course_code": "string*",
+                    "original_name": "string*",
+                    "workflow_state": "string*",
+                    "account_id": "string*",
+                    "root_account_id": "string*",
+                    "enrollment_term_id": "string*",
+                    "grading_periods": "string*",
+                    "grading_standard_id": "string*",
+                    "grade_passback_settings": "string*",
+                    "created_at": "string*",
+                    "start_at": "string*",
+                    "end_at": "string*",
+                    "locale": "string*",
+                    "enrollments": "string*",
+                    "total_students": "string*",
+                    "calendar": {
+                        "ics": "_:string"
+                    },
+                    "default_view": "string*",
+                    "syllabus_body": "string*",
+                    "needs_grading_count": "string*",
+                    "term": "string*",
+                    "course_progress": "string*",
+                    "apply_assignment_group_weights": "string*",
+                    "permissions": "string*",
+                    "is_public": "string*",
+                    "is_public_to_auth_users": "string*",
+                    "public_syllabus": "string*",
+                    "public_syllabus_to_auth": "string*",
+                    "public_description": "string*",
+                    "storage_quota_mb": "string*",
+                    "storage_quota_used_mb": "string*",
+                    "hide_final_grades": "string*",
+                    "license": "string*",
+                    "allow_student_assignment_edits": "string*",
+                    "allow_wiki_comments": "string*",
+                    "allow_student_forum_attachments": "string*",
+                    "open_enrollment": "string*",
+                    "self_enrollment": "string*",
+                    "restrict_enrollments_to_course_dates": "string*",
+                    "course_format": "string*",
+                    "access_restricted_by_date": "string*",
+                    "time_zone": "string*",
+                    "blueprint": "string*",
+                    "blueprint_restrictions": "string*",
+                    "blueprint_restriction_by_object_type": "string*",
+                    "template": "string*"
+                }
+            },
+            "enrollments": {
+                "operations": {
+                    "enrollmentsList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "courses",
+                            "iterator": "id",
+                            "path": "/v1/courses/{iterator}/enrollments"
+                        },
+                        "processing_options": {
+                            "output_field": null
+                        },
+                        "maxSessionCount": 20
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "course_id": "string*",
+                    "sis_course_id": "string*",
+                    "course_integration_id": "string*",
+                    "course_section_id": "string*",
+                    "section_integration_id": "string*",
+                    "sis_account_id": "string*",
+                    "sis_section_id": "string*",
+                    "sis_user_id": "string*",
+                    "enrollment_state": "string*",
+                    "limit_privileges_to_course_section": "string*",
+                    "sis_import_id": "string*",
+                    "root_account_id": "string*",
+                    "type": "string*",
+                    "user_id": "string*",
+                    "associated_user_id": "string*",
+                    "role": "string*",
+                    "role_id": "string*",
+                    "created_at": "string*",
+                    "updated_at": "string*",
+                    "start_at": "string*",
+                    "end_at": "string*",
+                    "last_activity_at": "string*",
+                    "last_attended_at": "string*",
+                    "total_activity_time": "string*",
+                    "html_url": "string*",
+                    "grades": {
+                        "html_url": "_:string",
+                        "current_score": "_:string",
+                        "current_grade": "_:string",
+                        "final_score": "_:string",
+                        "final_grade": "_:string"
+                    },
+                    "override_grade": "string*",
+                    "override_score": "string*",
+                    "unposted_current_grade": "string*",
+                    "unposted_final_grade": "string*",
+                    "unposted_current_score": "string*",
+                    "unposted_final_score": "string*",
+                    "has_grading_periods": "string*",
+                    "totals_for_all_grading_periods_option": "string*",
+                    "current_grading_period_title": "string*",
+                    "current_grading_period_id": "string*",
+                    "current_period_override_grade": "string*",
+                    "current_period_override_score": "string*",
+                    "current_period_unposted_current_score": "string*",
+                    "current_period_unposted_final_score": "string*",
+                    "current_period_unposted_current_grade": "string*",
+                    "current_period_unposted_final_grade": "string*"
+                }
+            },
+            "logins": {
+                "operations": {
+                    "loginsList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "accounts",
+                            "iterator": "id",
+                            "path": "/v1/accounts/{iterator}/logins"
+                        },
+                        "processing_options": {
+                            "output_field": null
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "account_id": "string*",
+                    "id": "string*",
+                    "sis_user_id": "string*",
+                    "unique_id": "string*",
+                    "user_id": "string*",
+                    "authentication_provider_id": "string*",
+                    "authentication_provider_type": "string*",
+                    "workflow_state": "string*",
+                    "declared_user_type": "string*"
+                }
+            },
+            "sections": {
+                "operations": {
+                    "sectionsList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "courses",
+                            "iterator": "id",
+                            "path": "/v1/courses/{iterator}/sections"
+                        },
+                        "processing_options": {
+                            "output_field": null
+                        },
+                        "maxSessionCount": 20
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "name": "string*",
+                    "sis_section_id": "string*",
+                    "integration_id": "string*",
+                    "sis_import_id": "string*",
+                    "course_id": "string*",
+                    "sis_course_id": "string*",
+                    "start_at": "string*",
+                    "end_at": "string*",
+                    "restrict_enrollments_to_section_dates": "string*",
+                    "nonxlist_course_id": "string*",
+                    "total_students": "string*"
+                }
+            },
+            "roles": {
+                "operations": {
+                    "rolesList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "accounts",
+                            "iterator": "id",
+                            "path": "/v1/accounts/{iterator}/roles"
+                        },
+                        "processing_options": {
+                            "output_field": "enrollment_terms"
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "label": "string*",
+                    "role": "string*",
+                    "base_role_type": "string*",
+                    "is_account_role": "string*",
+                    "account": {
+                        "id": "_:string*",
+                        "name": "_:string*",
+                        "parent_account_id": "_:string*",
+                        "root_account_id": "_:string*",
+                        "sis_account_id": "_:string*"
+                    },
+                    "workflow_state": "string*",
+                    "created_at": "string*",
+                    "last_updated_at": "string*"
+                }
+            },
+            "terms": {
+                "operations": {
+                    "termsList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "accounts",
+                            "iterator": "id",
+                            "path": "/v1/accounts/{iterator}/terms"
+                        },
+                        "processing_options": {
+                            "output_field": "enrollment_terms"
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "name": "string*",
+                    "start_at": "string*",
+                    "end_at": "string*",
+                    "created_at": "string*",
+                    "workflow_state": "string*",
+                    "grading_period_group_id": "string*",
+                    "sis_term_id": "string*",
+                    "overrides": {
+                        "StudentEnrollment": {
+                            "start_at": "_:string*",
+                            "end_at": "_:string*"
+                        },
+                        "TeacherEnrollments": {
+                            "start_at": "string*",
+                            "end_at": "string*"
+                        }
+                    }
+                }
+            },
             "users": {
                 "operations": {
                     "usersList": {
@@ -48,30 +323,150 @@
                         "processing_options": {
                             "output_field": null
                         }
+                    },
+                    "userCreate": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/v1/accounts/{account_id}/users",
+                            "post_processing": "as_input"
+                        },
+                        "postAsForm": true,
+                        "removeBlankFields": true,
+                        "processing_options": {},
+                        "body": {
+                            "_nim_merge_attributes_": false,
+                            "user[name]": "{name}",
+                            "user[short_name]": "{short_name}",
+                            "user[sortable_name]": "{sortable_name}",
+                            "user[timezone]": "{time_zone}",
+                            "user[locale]": "{locale}",
+                            "user[terms_of_use]": "{terms_of_use}",
+                            "user[skip_registration}": "{skip_registration}",
+                            "pseudonym[unique_id]": "{login_id}",
+                            "pseudonym[password]": "{password}",
+                            "pseudonym[sis_user_id]": "{sis_user_id}",
+                            "pseudonym[integration_id]": "{integration_id}",
+                            "pseudonym[send_confirmation]": "{send_confirmation}",
+                            "pseudonym[force_self_registration]": "{force_self_registration}",
+                            "pseudonym[authentication_provider_id]": "{authentication_provider_id}",
+                            "communication_channel[type]": "email",
+                            "communication_channel[address]": "{email}",
+                            "communication_channel[confirmation_url]": "{confirmation_url}",
+                            "force_validations": "{force_validations}",
+                            "enable_sis_reactivation": "{enable_sis_reactivation}",
+                            "destination": "{destination}",
+                            "initial_enrollment_type": "{initial_enrollment_type}",
+                            "pairing_code[code]": "{pairing_code}"
+
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_prohibited": [
+                            "last_name",
+                            "first_name"
+
+                        ],
+                        "resource_mandatory": [
+                            "name",
+                            "login_id",
+                            "email",
+                            "account_id"
+                        ]
+                    },
+                    "userUpdate": {
+                        "method": "put",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/v1/users/{id}",
+                            "post_processing": "as_input"
+                        },
+                        "postAsForm": true,
+                        "removeBlankFields": true,
+                        "processing_options": {},
+                        "body": {
+                            "_nim_merge_attributes_": false,
+                            "user[name]": "{name}",
+                            "user[short_name]": "{short_name}",
+                            "user[sortable_name]": "{sortable_name}",
+                            "user[timezone]": "{time_zone}",
+                            "user[locale]": "{locale}",
+                            "user[avatar][url]": "{avatar_url}",
+                            "user[avatar][state]": "{avatar_state}"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "optional",
+                        "resource_prohibited": [
+                            "last_name",
+                            "first_name"
+
+                        ],
+                        "resource_mandatory": [
+                            "id"
+                        ]
+                    },
+                    "userDelete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/v1/accounts/{account_id}/users/{id}",
+                            "post_processing": "as_input"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id",
+                            "account_id"
+                        ]
+                    },
+                    "userTerminateSessions": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/v1/users/{id}/sessions",
+                            "post_processing": "as_input"
+                        },
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id",
+                            "account_id"
+                        ]
                     }
                 },
                 "key": "id",
                 "resources": {
                     "id": "string*",
+                    "account_id": "string*",
                     "name": "string*",
                     "sortable_name": "string*",
-                    "last_name": "string*",
-                    "first_name": "string*",
+                    "last_name": "string",
+                    "first_name": "string",
                     "short_name": "string*",
                     "sis_user_id": "string*",
                     "sis_import_id": "string*",
                     "integration_id": "string*",
                     "login_id": "string*",
-                    "avatar_url": "string*",
-                    "avatar_state": "string*",
-                    "enrollments": "string*",
+                    "avatar_url": "string",
+                    "avatar_state": "string",
                     "email": "string*",
                     "locale": "string*",
                     "last_login": "string*",
-                    "time_zone": "string*",
-                    "bio": "string*",
-                    "pronouns": "string*",
-                    "created_at": "string*"
+                    "time_zone": "string",
+                    "bio": "string",
+                    "pronouns": "string",
+                    "created_at": "string*",
+                    "terms_of_use": "string",
+                    "skip_registration": "boolean",
+                    "password": "string",
+                    "send_confirmation": "boolean",
+                    "force_self_registration": "boolean",
+                    "authentication_provider_id": "string",
+                    "enable_sis_reactivation": "boolean",
+                    "destination": "string",
+                    "initial_enrollment_type": "string",
+                    "pairing_code": "string",
+                    "confirmation_url": "string",
+                    "force_validations": "boolean"
                 }
             }
         }
@@ -84,7 +479,7 @@
                     "mode": "link"
                 },
                 "queryParameters": {
-                    "per_page": 5000
+                    "per_page": 100
                 }
             },
             "authentication": "aeries",
