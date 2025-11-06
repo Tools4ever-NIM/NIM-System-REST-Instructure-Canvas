@@ -118,6 +118,98 @@
                             "output_field": null
                         },
                         "maxSessionCount": 20
+                    },
+                    "enrollmentCourseCreate": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/v1/courses/{course_id}/enrollments",
+                            "post_processing": "as_input"
+                        },
+                        "postAsForm": true,
+                        "removeBlankFields": true,
+                        "processing_options": {},
+                        "body": {
+                            "_nim_merge_attributes_": false,
+                            "enrollment[start_at]": "{start_at}",
+                            "enrollment[end_at]": "{end_at}",
+                            "enrollment[user_id]": "{user_id}",
+                            "enrollment[type]": "{type}",
+                            "enrollment[role_id]": "{role_id}",
+                            "enrollment[enrollment_state]": "{enrollment_state}",
+                            "enrollment[course_section_id]": "{course_section_id}",
+                            "enrollment[limit_privileges_to_course_section]": "{limit_privileges_to_course_section}",
+                            "enrollment[notify]": "{notify}",
+                            "enrollment[self_enrollment_code]": "{self_enrollment_code}",
+                            "enrollment[self_enrolled]": "{self_enrolled}",
+                            "enrollment[associated_user_id]": "{associated_user_id}",
+                            "enrollment[sis_user_id]": "{sis_user_id}",
+                            "enrollment[integration_id]": "{integration_id}",
+                            "root_account": "{root_account}"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_prohibited": [
+
+                        ],
+                        "resource_mandatory": [
+                            "user_id",
+                            "type",
+                            "course_id"
+                        ]
+                    },
+                    "enrollmentSectionCreate": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/v1/sections/{section_id}/enrollments",
+                            "post_processing": "as_input"
+                        },
+                        "postAsForm": true,
+                        "removeBlankFields": true,
+                        "processing_options": {},
+                        "body": {
+                            "_nim_merge_attributes_": false,
+                            "enrollment[start_at]": "{start_at}",
+                            "enrollment[end_at]": "{end_at}",
+                            "enrollment[user_id]": "{user_id}",
+                            "enrollment[type]": "{type}",
+                            "enrollment[role_id]": "{role_id}",
+                            "enrollment[enrollment_state]": "{enrollment_state}",
+                            "enrollment[course_section_id]": "{course_section_id}",
+                            "enrollment[limit_privileges_to_course_section]": "{limit_privileges_to_course_section}",
+                            "enrollment[notify]": "{notify}",
+                            "enrollment[self_enrollment_code]": "{self_enrollment_code}",
+                            "enrollment[self_enrolled]": "{self_enrolled}",
+                            "enrollment[associated_user_id]": "{associated_user_id}",
+                            "enrollment[sis_user_id]": "{sis_user_id}",
+                            "enrollment[integration_id]": "{integration_id}",
+                            "root_account": "{root_account}"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_prohibited": [
+
+                        ],
+                        "resource_mandatory": [
+                            "user_id",
+                            "type",
+                            "section_id"
+                        ]
+                    },
+                    "enrollmentDelete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/v1/courses/{course_id}/enrollments/{id}",
+                            "post_processing": "as_input"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id",
+                            "course_id"
+                        ]
                     }
                 },
                 "key": "id",
@@ -170,7 +262,11 @@
                     "current_period_unposted_current_score": "string*",
                     "current_period_unposted_final_score": "string*",
                     "current_period_unposted_current_grade": "string*",
-                    "current_period_unposted_final_grade": "string*"
+                    "current_period_unposted_final_grade": "string*",
+                    "notify": "boolean",
+                    "self_enrollment_code": "string",
+                    "self_enrolled": "boolean",
+                    "root_account": "string"
                 }
             },
             "logins": {
@@ -179,13 +275,91 @@
                         "method": "get",
                         "call": {
                             "mode": "iteration",
-                            "table": "accounts",
+                            "table": "users",
                             "iterator": "id",
-                            "path": "/v1/accounts/{iterator}/logins"
+                            "path": "/v1/users/{iterator}/logins"
                         },
                         "processing_options": {
                             "output_field": null
-                        }
+                        },
+                        "maxSessionCount": 50
+                    },
+                    "loginCreate": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/v1/accounts/{account_id}/users",
+                            "post_processing": "as_input"
+                        },
+                        "postAsForm": true,
+                        "removeBlankFields": true,
+                        "processing_options": {},
+                        "body": {
+                            "_nim_merge_attributes_": false,
+                            "user[id]": "{user_id}",
+                            "login[unique_id]": "{unique_id}",
+                            "login[password]": "{password}",
+                            "login[sis_user_id]": "{sis_user_id}",
+                            "login[integration_id]": "{integration_id}",
+                            "login[authentication_provider_id]": "{authentication_provider_id}",
+                            "login[declared_user_type]": "{declared_user_type}"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_prohibited": [
+                            "authentication_provider_type"
+                        ],
+                        "resource_mandatory": [
+                            "account_id",
+                            "user_id",
+                            "unique_id"
+                        ]
+                    },
+                    "loginUpdate": {
+                        "method": "put",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/v1/accounts/{account_id}/logins/{id}",
+                            "post_processing": "as_input"
+                        },
+                        "postAsForm": true,
+                        "removeBlankFields": true,
+                        "processing_options": {},
+                        "body": {
+                            "_nim_merge_attributes_": false,
+                            "login[unique_id]": "{unique_id}",
+                            "login[password]": "{password}",
+                            "login[sis_user_id]": "{sis_user_id}",
+                            "login[integration_id]": "{integration_id}",
+                            "login[authentication_provider_id]": "{authentication_provider_id}",
+                            "login[workflow_state]": "{workflow_state",
+                            "login[declared_user_type]": "{declared_user_type}",
+                            "override_sis_stickiness": "{override_sis_stickiness}"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "optional",
+                        "resource_prohibited": [
+                            "authentication_provider_type",
+                            "user_id"
+                        ],
+                        "resource_mandatory": [
+                            "account_id",
+                            "id"
+                        ]
+                    },
+                    "loginDelete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/v1/users/{user_id}/logins/{id}",
+                            "post_processing": "as_input"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "user_id",
+                            "id"
+                        ]
                     }
                 },
                 "key": "id",
@@ -198,7 +372,10 @@
                     "authentication_provider_id": "string*",
                     "authentication_provider_type": "string*",
                     "workflow_state": "string*",
-                    "declared_user_type": "string*"
+                    "declared_user_type": "string*",
+                    "password": "string",
+                    "integration_id": "string",
+                    "override_sis_stickiness": "boolean"
                 }
             },
             "sections": {
