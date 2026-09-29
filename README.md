@@ -1,5 +1,7 @@
 # Instructure Canvas
 
+Read the [Instructure Canvas integration documentation](https://docs.nimsuite.com/en/integrations/instructure-canvas) for connector details and related guides.
+
 <img src="https://github.com/user-attachments/assets/7cb2e2ef-7702-47c8-ad38-fe5935698869" width="256px">
 
 # Data Tables
